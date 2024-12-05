@@ -3,6 +3,7 @@ import "./globals.css";
 import { cn, constructMetadata } from "@/lib/utils";
 import { ViewTransitions } from "next-view-transitions";
 import { geistMono, geistSans } from "@/lib/fonts";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = constructMetadata({
   title: "Tafi UI",
@@ -23,7 +24,9 @@ export default function RootLayout({
             `${geistSans.variable} ${geistMono.variable}`
           )}
         >
-          {children}
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ViewTransitions>
