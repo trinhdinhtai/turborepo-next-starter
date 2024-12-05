@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-import { constructMetadata } from "@/lib/utils";
+import { cn, constructMetadata } from "@/lib/utils";
 import { ViewTransitions } from "next-view-transitions";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-});
+import { geistMono, geistSans } from "@/lib/fonts";
 
 export const metadata: Metadata = constructMetadata({
   title: "Tafi UI",
@@ -26,7 +17,12 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <body
+          className={cn(
+            "bg-background relative flex min-h-screen w-full flex-col justify-center overflow-x-hidden scroll-smooth font-sans antialiased",
+            `${geistSans.variable} ${geistMono.variable}`
+          )}
+        >
           {children}
         </body>
       </html>
