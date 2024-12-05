@@ -4,6 +4,8 @@ import { cn, constructMetadata } from "@/lib/utils";
 import { ViewTransitions } from "next-view-transitions";
 import { geistMono, geistSans } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = constructMetadata({
   title: "Tafi UI",
@@ -25,7 +27,10 @@ export default function RootLayout({
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="dark">
-            {children}
+            <TooltipProvider>
+              {children}
+              <Toaster />
+            </TooltipProvider>
           </ThemeProvider>
         </body>
       </html>
