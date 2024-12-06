@@ -5,6 +5,7 @@ import Link from "next/link";
 import { allDocs } from "content-collections";
 import { compareDesc } from "date-fns";
 import { Separator } from "@/components/ui/separator";
+import TechStack from "@/components/tech-stack";
 
 export default async function Hero() {
   const post = allDocs
@@ -41,7 +42,72 @@ export default async function Hero() {
                 Introducing {post.title}
                 <ChevronRight className="text-muted-foreground ml-1 size-4" />
               </Link>
+
+              <div className="relative flex flex-col gap-4 md:items-center lg:flex-row">
+                <h1
+                  className={cn(
+                    "text-black dark:text-white",
+                    "relative mx-0 max-w-[43.5rem]  pt-5  md:mx-auto md:px-4 md:py-2",
+                    "text-balance text-left font-semibold tracking-tighter md:text-center",
+                    "text-5xl sm:text-7xl md:text-7xl lg:text-7xl"
+                  )}
+                >
+                  Tafi UI
+                </h1>
+              </div>
+
+              <p className="max-w-xl text-balance text-left text-base tracking-tight text-black md:text-center md:text-lg dark:font-medium dark:text-white ">
+                160+ free and open-source UI elements built with <b>React</b>,
+                <b>Typescript</b>,<b>Tailwind CSS</b>, and <b>Framer Motion</b>
+                .
+                <br />
+                Perfect companion for.
+              </p>
+
+              <div className="mx-0 flex w-full max-w-full flex-col gap-4 py-1 sm:max-w-lg sm:flex-row md:mx-auto">
+                <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-4">
+                  <Link
+                    href="/components"
+                    className={cn(
+                      buttonVariants({
+                        variant: "rainbow",
+                        size: "lg",
+                      }),
+                      "w-full gap-2"
+                    )}
+                  >
+                    Browse Components
+                    <ChevronRight className="ml-1  size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    href="https://pro.magicui.design"
+                    className={cn(
+                      buttonVariants({
+                        size: "lg",
+                        variant: "rainbow-outline",
+                      }),
+                      "w-full gap-2"
+                    )}
+                  >
+                    Browse Templates
+                    <ChevronRight className="ml-1 size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                  </Link>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div className="relative mx-auto flex w-full max-w-56 items-center justify-center">
+            <TechStack
+              className="mx-auto flex w-full items-center justify-between"
+              technologies={[
+                "react",
+                "typescript",
+                "tailwindcss",
+                "framermotion",
+                "tafiui",
+              ]}
+            />
           </div>
         </div>
       </div>
