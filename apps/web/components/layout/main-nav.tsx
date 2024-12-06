@@ -1,9 +1,17 @@
 "use client";
 
+import ListItem from "@/components/layout/list-item";
 import { Badge } from "@/components/ui/badge";
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/registry/miami/ui/navigation-menu";
 import { ExternalLinkIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,7 +30,26 @@ export default function MainNav() {
       <nav className="hidden items-center space-x-6 text-sm font-medium xl:flex">
         {docsConfig.mainNav.map((item) =>
           item.items ? (
-            <></>
+            <NavigationMenu key={item.title}>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+                  <NavigationMenuContent className="flex flex-col items-center">
+                    <ul className="flex flex-col items-center gap-3 p-4">
+                      {item.items.map((subItem) => (
+                        <ListItem
+                          key={subItem.href}
+                          href={subItem.href}
+                          title={subItem.title}
+                        >
+                          {subItem.label}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           ) : (
             <Link
               key={item.href}
