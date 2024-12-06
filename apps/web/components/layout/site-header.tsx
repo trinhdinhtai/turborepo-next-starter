@@ -1,3 +1,4 @@
+import { CommandMenu } from "@/components/command-menu";
 import { Icons } from "@/components/icons";
 import MainNav from "@/components/layout/main-nav";
 import MobileNav from "@/components/layout/mobile-nav";
@@ -68,6 +69,10 @@ export default async function SiteHeader() {
               />
             </div>
           </Link>
+
+          <div className="w-full flex-1 md:w-auto md:flex-none">
+            <CommandMenu />
+          </div>
         </div>
       </div>
     </header>
