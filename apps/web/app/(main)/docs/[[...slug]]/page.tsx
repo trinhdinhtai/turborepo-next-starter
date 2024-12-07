@@ -8,13 +8,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface DocPageProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
 async function getDocFromParams({ params }: DocPageProps) {
-  const slug = params.slug?.join("/") || "";
+  const docParams = await params;
+  const slug = docParams.slug?.join("/") || "";
 
   const doc = allDocs.find((doc) => {
     return doc.slug === slug;
