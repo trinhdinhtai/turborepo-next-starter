@@ -12,6 +12,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@content-collections/mdx": "^0.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-navigation-menu": "^1.2.1",
@@ -25,17 +26,23 @@
     "cmdk": "^1.0.4",
     "date-fns": "^4.1.0",
     "framer-motion": "^11.13.1",
+    "jotai": "^2.10.3",
     "lucide-react": "^0.468.0",
+    "mdast-util-toc": "^7.1.0",
     "next": "15.0.3",
     "next-themes": "^0.4.3",
     "next-view-transitions": "^0.3.4",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
+    "remark": "^15.0.1",
+    "remark-code-import": "^1.2.0",
+    "remark-gfm": "^4.0.0",
     "rimraf": "^6.0.1",
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "ts-morph": "^24.0.0",
+    "unist-util-visit": "^5.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
