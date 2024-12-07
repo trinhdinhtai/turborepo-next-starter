@@ -74,8 +74,8 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "nyxbui.json",
-          href: "/docs/nyxbui-json",
+          title: "tafiui.json",
+          href: "/docs/tafiui-json",
           items: [],
         },
         {

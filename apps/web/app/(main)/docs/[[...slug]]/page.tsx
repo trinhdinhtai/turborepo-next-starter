@@ -1,5 +1,7 @@
 import { Mdx } from "@/components/mdx-components";
+import TableOfContents from "@/components/toc";
 import { badgeVariants } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { getTableOfContents } from "@/lib/toc";
 import { cn } from "@/lib/utils";
 import { allDocs } from "content-collections";
@@ -15,6 +17,7 @@ interface DocPageProps {
 
 async function getDocFromParams({ params }: DocPageProps) {
   const docParams = await params;
+  console.log("🚀 ~ getDocFromParams ~ docParams:", docParams);
   const slug = docParams.slug?.join("/") || "";
 
   const doc = allDocs.find((doc) => {
@@ -91,6 +94,18 @@ export default async function DocPage({ params }: DocPageProps) {
           <Mdx code={doc.body.code} />
         </div>
       </div>
+
+      {doc.toc && (
+        <div className="hidden text-sm xl:block">
+          <div className="sticky top-16 -mt-10 pt-4">
+            <ScrollArea className="pb-10">
+              <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] space-y-4 py-12">
+                <TableOfContents toc={toc} />
+              </div>
+            </ScrollArea>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

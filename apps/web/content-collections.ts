@@ -26,7 +26,7 @@ const documents = defineCollection({
     });
     return {
       ...document,
-      slug: document._meta.path === "index" ? "" : `/${document._meta.path}`,
+      slug: document._meta.path === "index" ? "" : `${document._meta.path}`,
       body: {
         raw: document.content,
         code: body,
