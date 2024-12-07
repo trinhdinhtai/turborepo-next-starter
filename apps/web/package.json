@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@content-collections/mdx": "^0.2.0",
+    "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-navigation-menu": "^1.2.1",
