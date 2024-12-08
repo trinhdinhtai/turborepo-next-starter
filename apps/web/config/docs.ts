@@ -68,11 +68,7 @@ export const docsConfig: DocsConfig = {
           href: "/docs/installation",
           items: [],
         },
-        {
-          title: "Story",
-          href: "/docs/story",
-          items: [],
-        },
+
         {
           title: "tafiui.json",
           href: "/docs/tafiui-json",
