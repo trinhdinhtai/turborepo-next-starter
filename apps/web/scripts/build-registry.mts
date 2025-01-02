@@ -97,14 +97,14 @@ export const Index: Record<string, any> = {
             isDefault?: boolean;
           }
         >();
-        sourceFile.getImportDeclarations().forEach((node) => {
+        for (const node of sourceFile.getImportDeclarations()) {
           const module = node.getModuleSpecifier().getLiteralValue();
-          node.getNamedImports().forEach((item) => {
+          for (const item of node.getNamedImports()) {
             imports.set(item.getText(), {
               module,
               text: node.getText(),
             });
-          });
+          }
 
           const defaultImport = node.getDefaultImport();
           if (defaultImport) {
@@ -114,7 +114,7 @@ export const Index: Record<string, any> = {
               isDefault: true,
             });
           }
-        });
+        }
 
         // Find all opening tags with x-chunk attribute.
         const components = sourceFile
@@ -180,7 +180,7 @@ export const Index: Record<string, any> = {
               string,
               string | string[] | Set<string>
             >();
-            children.forEach((child) => {
+            for (const child of children) {
               const importLine = imports.get(child);
               if (importLine) {
                 const imports = componentImports.get(importLine.module) || [];
@@ -194,9 +194,9 @@ export const Index: Record<string, any> = {
                   importLine?.isDefault ? newImports : Array.from(newImports)
                 );
               }
-            });
+            }
 
-            const componnetImportLines = Array.from(
+            const componentImportLines = Array.from(
               componentImports.keys()
             ).map((key) => {
               const values = componentImports.get(key);
@@ -208,13 +208,13 @@ export const Index: Record<string, any> = {
             });
 
             const code = `
-           'use client'
+          'use client'
 
-           ${componnetImportLines.join("\n")}
+          ${componentImportLines.join("\n")}
 
-           export default function Component() {
-             return (${parentJsxElement.getText()})
-           }`;
+          export default function Component() {
+            return (${parentJsxElement.getText()})
+          }`;
 
             const targetFile = file.replace(item.name, `${chunkName}`);
             const targetFilePath = path.join(
@@ -261,7 +261,7 @@ export const Index: Record<string, any> = {
         await fs.writeFile(sourcePath, sourceFile.getText());
       }
 
-      let componentPath = `~/registry/${style.name}/${type}/${item.name}`;
+      let componentPath = `@/registry/${style.name}/${type}/${item.name}`;
 
       if (item.files) {
         const files = item.files.map((file) =>
@@ -270,7 +270,7 @@ export const Index: Record<string, any> = {
             : file
         );
         if (files?.length) {
-          componentPath = `~/registry/${style.name}/${files[0].path}`;
+          componentPath = `@/registry/${style.name}/${files[0].path}`;
         }
       }
 

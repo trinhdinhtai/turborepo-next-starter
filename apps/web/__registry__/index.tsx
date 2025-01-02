@@ -15,7 +15,23 @@ export const Index: Record<string, any> = {
        type: "registry:component",
        target: ""
      }],
-     component: React.lazy(() => import("~/registry/miami/ui/accordion.tsx")),
+     component: React.lazy(() => import("@/registry/miami/ui/accordion.tsx")),
+     source: "",
+     category: "",
+     subcategory: "",
+     chunks: []
+   },
+   "select": {
+     name: "select",
+     description: "",
+     type: "registry:ui",
+     registryDependencies: undefined,
+     files: [{
+       path: "registry/miami/ui/select.tsx",
+       type: "registry:component",
+       target: ""
+     }],
+     component: React.lazy(() => import("@/registry/miami/ui/select.tsx")),
      source: "",
      category: "",
      subcategory: "",
@@ -32,7 +48,23 @@ export const Index: Record<string, any> = {
        type: "registry:component",
        target: ""
      }],
-     component: React.lazy(() => import("~/registry/default/ui/accordion.tsx")),
+     component: React.lazy(() => import("@/registry/default/ui/accordion.tsx")),
+     source: "",
+     category: "",
+     subcategory: "",
+     chunks: []
+   },
+   "select": {
+     name: "select",
+     description: "",
+     type: "registry:ui",
+     registryDependencies: undefined,
+     files: [{
+       path: "registry/default/ui/select.tsx",
+       type: "registry:component",
+       target: ""
+     }],
+     component: React.lazy(() => import("@/registry/default/ui/select.tsx")),
      source: "",
      category: "",
      subcategory: "",
