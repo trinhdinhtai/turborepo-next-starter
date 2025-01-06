@@ -17,6 +17,12 @@ import { StyleWrapper } from "@/components/style-wrapper";
 import CopyButton from "@/components/copy-button";
 import CopyNpmCommandButton from "@/components/copy-npm-command-button";
 import { ComponentPreview } from "@/components/component-preview";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/miami/ui/tabs";
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -211,6 +217,45 @@ const components = {
   AccordionItem,
   AccordionTrigger,
   ComponentPreview,
+  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
+    <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+  ),
+  TabsList: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsList>) => (
+    <TabsList
+      className={cn(
+        "w-full justify-start rounded-none border-b bg-transparent p-0",
+        className
+      )}
+      {...props}
+    />
+  ),
+  TabsTrigger: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsTrigger>) => (
+    <TabsTrigger
+      className={cn(
+        "text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold shadow-none transition-none data-[state=active]:shadow-none",
+        className
+      )}
+      {...props}
+    />
+  ),
+  TabsContent: ({
+    className,
+    ...props
+  }: React.ComponentProps<typeof TabsContent>) => (
+    <TabsContent
+      className={cn(
+        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+        className
+      )}
+      {...props}
+    />
+  ),
 };
 
 interface MdxProps {
