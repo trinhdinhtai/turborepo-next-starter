@@ -108,12 +108,11 @@ export function ComponentPreview({
 
         <TabsContent value="preview" className="relative rounded-md" key={key}>
           <ComponentWrapper dots={dots}>
-            {styleSwitch && (
+            {styleSwitch ? (
               <div className="absolute left-4 top-4">
                 <StyleSwitcher />
               </div>
-            )}
-            {!styleSwitch && (
+            ) : (
               <Button
                 onClick={() => setKey((prev) => prev + 1)}
                 className="absolute right-4 top-4 z-10 flex items-center rounded-lg px-3 py-1"
@@ -122,6 +121,7 @@ export function ComponentPreview({
                 <RotateCcwIcon aria-label="restart-btn" size={16} />
               </Button>
             )}
+
             <Suspense
               fallback={
                 <div className="text-muted-foreground flex items-center text-sm">
