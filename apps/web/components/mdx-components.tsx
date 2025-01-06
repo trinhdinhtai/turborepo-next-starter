@@ -16,6 +16,7 @@ import type { Event } from "@/lib/events";
 import { StyleWrapper } from "@/components/style-wrapper";
 import CopyButton from "@/components/copy-button";
 import CopyNpmCommandButton from "@/components/copy-npm-command-button";
+import { ComponentPreview } from "@/components/component-preview";
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -209,6 +210,7 @@ const components = {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  ComponentPreview,
 };
 
 interface MdxProps {
