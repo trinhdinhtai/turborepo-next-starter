@@ -54,8 +54,8 @@
   "devDependencies": {
     "@content-collections/core": "^0.7.3",
     "@content-collections/next": "^0.2.4",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@tafiui/eslint-config": "workspace:*",
+    "@tafiui/ts-config": "workspace:*",
     "@types/node": "^20",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
