@@ -12,5 +12,5 @@ export default defineConfig({
   dts: true,
   target: "es2022",
   format: "esm",
-  entry: ["src/{toc}.tsx"],
+  entry: ["src/{toc,link}.tsx"],
 });

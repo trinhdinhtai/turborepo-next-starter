@@ -103,6 +103,9 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@tafiui/mdx':
+        specifier: workspace:*
+        version: link:../../packages/mdx
       '@vercel/analytics':
         specifier: ^1.4.1
         version: 1.4.1(next@15.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
