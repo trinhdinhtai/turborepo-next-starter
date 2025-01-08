@@ -46,6 +46,9 @@ importers:
       '@tafiui/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@tafiui/mdx':
+        specifier: workspace:*
+        version: link:../../packages/mdx
       '@tafiui/ts-config':
         specifier: workspace:*
         version: link:../../packages/ts-config

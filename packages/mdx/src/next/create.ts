@@ -1,4 +1,5 @@
 import { findConfigFile } from "@/config/load";
+import type { NextConfig } from "next";
 
 export interface CreateMDXOptions {
   /**
@@ -15,4 +16,10 @@ export function createMDX({
   // we only execute on the first iteration
   const isDev = process.argv.includes("dev");
   const isBuild = process.argv.includes("build");
+
+  return (nextConfig: NextConfig = {}): NextConfig => {
+    return {
+      ...nextConfig,
+    };
+  };
 }
