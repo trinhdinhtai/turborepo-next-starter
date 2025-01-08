@@ -1,5 +1,6 @@
 import { findConfigFile } from "@/config/load";
 import type { NextConfig } from "next";
+import { type Options as MDXLoaderOptions } from "@/loader-mdx";
 
 export interface CreateMDXOptions {
   /**
@@ -18,8 +19,33 @@ export function createMDX({
   const isBuild = process.argv.includes("build");
 
   return (nextConfig: NextConfig = {}): NextConfig => {
+    const mdxLoaderOptions: MDXLoaderOptions = {
+      _ctx: {
+        configPath,
+      },
+    };
     return {
       ...nextConfig,
+      webpack(config, options) {
+        config.resolve ||= {};
+        config.module ||= {};
+        config.module.rules ||= [];
+
+        config.module.rules.push({
+          test: /\.mdx?$/,
+          use: [
+            options.defaultLoaders.babel,
+            {
+              loader: "@tafiui/mdx/loader-mdx",
+              options: mdxLoaderOptions,
+            },
+          ],
+        });
+
+        config.plugins ||= [];
+
+        return nextConfig.webpack?.(config, options) ?? config;
+      },
     };
   };
 }
