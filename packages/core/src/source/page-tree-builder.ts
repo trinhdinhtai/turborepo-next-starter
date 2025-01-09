@@ -38,8 +38,24 @@ export interface BuildPageTreeOptions {
   ) => PageTree.Folder
   attachSeparator?: (node: PageTree.Separator) => PageTree.Separator
 
+  storage: Storage
   getUrl: UrlFn
   resolveIcon?: (icon: string | undefined) => ReactElement | undefined
+}
+
+export interface BuildPageTreeOptionsWithI18n extends BuildPageTreeOptions {
+  i18n: I18nConfig
+}
+
+export interface PageTreeBuilder {
+  build: (options: BuildPageTreeOptions) => PageTree.Root
+
+  /**
+   * Build page tree and fallback to the default language if the localized page doesn't exist
+   */
+  buildI18n: (
+    options: BuildPageTreeOptionsWithI18n
+  ) => Record<string, PageTree.Root>
 }
 
 const group = /^\((?<name>.+)\)$/
@@ -48,6 +64,16 @@ const separator = /^---(?<name>.*?)---$/
 const rest = "..."
 const extractPrefix = "..."
 const excludePrefix = "!"
+
+function build(ctx: PageTreeBuilderContext) {
+  const root = ctx.storage.root()
+  const folder = buildFolderNode(root, true, ctx)
+
+  return {
+    name: folder.name,
+    children: folder.children,
+  }
+}
 
 /**
  * @param nodes - All nodes to be built
@@ -264,13 +290,29 @@ function buildFolderNode(
   return removeUndefined(ctx.options.attachFolder?.(node, folder, meta) ?? node)
 }
 
-export interface PageTreeBuilder {
-  build: (options: BuildPageTreeOptions) => PageTree.Root
-}
+export function createPageTreeBuilder(): PageTreeBuilder {
+  return {
+    build(options) {
+      return build({
+        options,
+        builder: this,
+        storage: options.storage,
+      })
+    },
+    buildI18n({ i18n, ...options }) {
+      const entries = i18n.languages.map<[string, PageTree.Root]>((lang) => {
+        const tree = build({
+          lang,
+          options,
+          builder: this,
+          storage: options.storage,
+          i18n,
+        })
 
-function build(ctx: PageTreeBuilderContext) {
-  const root = ctx.storage.root()
-  const folder = buildFolderNode(root, true, ctx)
-}
+        return [lang, tree]
+      })
 
-export function createPageTreeBuilder() {}
+      return Object.fromEntries(entries)
+    },
+  }
+}
