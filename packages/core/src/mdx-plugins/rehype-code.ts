@@ -1,5 +1,7 @@
 import { IconOptions } from "@/mdx-plugins/transformer-icon"
 import type { RehypeShikiOptions } from "@shikijs/rehype"
+import type { Root } from "hast"
+import type { Processor, Transformer } from "unified"
 
 export type RehypeCodeOptions = RehypeShikiOptions & {
   /**
@@ -26,3 +28,11 @@ export type RehypeCodeOptions = RehypeShikiOptions & {
    */
   experimentalJSEngine?: boolean
 }
+
+/**
+ * Handle codeblocks
+ */
+export function rehypeCode(
+  this: Processor,
+  options: Partial<RehypeCodeOptions> = {}
+) {}

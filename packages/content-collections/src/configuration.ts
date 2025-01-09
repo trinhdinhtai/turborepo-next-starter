@@ -3,13 +3,18 @@
  *
  * You may copy and modify the code
  */
-import { ResolvePlugins } from "@/resolve-plugins"
+import {
+  resolvePlugin,
+  resolvePlugins,
+  type ResolvePlugins,
+} from "@/resolve-plugins"
 import type { Context, Meta } from "@content-collections/core"
 import {
   compileMDX as baseCompileMDX,
   type Options as MDXOptions,
 } from "@content-collections/mdx"
 import {
+  rehypeCode,
   type RehypeCodeOptions,
   type RemarkHeadingOptions,
   type RemarkImageOptions,
@@ -125,7 +130,13 @@ export async function transformMDX<D extends BaseDoc>(
         {
           cwd: process.cwd(),
           ...rest,
-          rehypePlugins: undefined,
+          rehypePlugins: resolvePlugins(
+            (plugins) => [
+              resolvePlugin(rehypeCode, rehypeCodeOptions ?? true),
+              ...plugins,
+            ],
+            rest.rehypePlugins
+          ),
           remarkPlugins: undefined,
         }
       )
