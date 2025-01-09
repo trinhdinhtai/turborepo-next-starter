@@ -26,6 +26,7 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "@repo/ui": "workspace:*",
     "@tafiui/content-collections": "workspace:*",
+    "@tafiui/core": "workspace:*",
     "@tafiui/mdx": "workspace:*",
     "@vercel/analytics": "^1.4.1",
     "class-variance-authority": "^0.7.1",

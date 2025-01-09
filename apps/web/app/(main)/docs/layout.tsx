@@ -1,8 +1,11 @@
-import { DocsSidebarNav } from "@/components/layout/sidebar-nav";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { docsConfig } from "@/config/docs";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react"
 
+import { docsConfig } from "@/config/docs"
+import { source } from "@/lib/source"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { DocsSidebarNav } from "@/components/layout/sidebar-nav"
+
+console.log("🚀 ~ source:", source)
 export default function DocsLayout({ children }: PropsWithChildren) {
   return (
     <div className="border-b">
@@ -15,5 +18,5 @@ export default function DocsLayout({ children }: PropsWithChildren) {
         {children}
       </div>
     </div>
-  );
+  )
 }
