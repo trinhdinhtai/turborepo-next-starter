@@ -8,6 +8,11 @@ export interface MetaData {
   description?: string | undefined
 }
 
+export interface PageData {
+  icon?: string | undefined
+  title: string
+}
+
 /**
  * @internal
  */
