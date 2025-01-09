@@ -1,3 +1,5 @@
+import { slash, splitPath } from "@/utils/path"
+
 export interface FileInfo {
   /**
    * The locale extension of file
@@ -20,4 +22,51 @@ export interface FileInfo {
   name: string
 
   dirname: string
+}
+
+function getLocale(name: string): [string, string?] {
+  const sep = name.lastIndexOf(".")
+  if (sep === -1) return [name]
+  const locale = name.slice(sep + 1)
+
+  if (/\d+/.exec(locale)) return [name]
+  return [name.slice(0, sep), locale]
+}
+
+export function parseFilePath(path: string): FileInfo {
+  const segments = splitPath(slash(path))
+
+  const dirname = segments.slice(0, -1).join("/")
+  const base = segments.at(-1) ?? ""
+
+  const dotIdx = base.lastIndexOf(".")
+  const nameWithLocale = dotIdx !== -1 ? base.slice(0, dotIdx) : base
+
+  const flattenedPath = [dirname, nameWithLocale]
+    .filter((p) => p.length > 0)
+    .join("/")
+
+  const [name, locale] = getLocale(nameWithLocale)
+  return {
+    dirname,
+    name,
+    flattenedPath,
+    locale,
+    path: segments.join("/"),
+  }
+}
+
+export function parseFolderPath(path: string): FileInfo {
+  const segments = splitPath(slash(path))
+  const base = segments.at(-1) ?? ""
+  const [name, locale] = getLocale(base)
+  const flattenedPath = segments.join("/")
+
+  return {
+    dirname: segments.slice(0, -1).join("/"),
+    name,
+    flattenedPath,
+    locale,
+    path: flattenedPath,
+  }
 }
