@@ -1,4 +1,4 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from "tsup"
 
 export default defineConfig({
   external: [
@@ -12,5 +12,5 @@ export default defineConfig({
   dts: true,
   target: "es2022",
   format: "esm",
-  entry: ["src/{toc,link}.tsx"],
-});
+  entry: ["src/{toc,link}.tsx", "src/{server,source,mdx-plugins}/index.ts"],
+})

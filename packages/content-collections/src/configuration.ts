@@ -9,6 +9,7 @@ import {
   compileMDX as baseCompileMDX,
   type Options as MDXOptions,
 } from "@content-collections/mdx"
+import { type RemarkHeadingOptions } from "@tafiui/core/mdx-plugins"
 import type { z as Zod } from "zod"
 
 export interface TransformOptions
@@ -22,6 +23,8 @@ export interface TransformOptions
    * @defaultValue true
    */
   generateStructuredData?: boolean
+
+  remarkHeadingOptions?: RemarkHeadingOptions | boolean
 }
 
 interface BaseDoc {
