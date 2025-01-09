@@ -1,4 +1,6 @@
 import { I18nConfig } from "@/i18n"
+import { BuildPageTreeOptions } from "@/source/page-tree-builder"
+import { FileInfo } from "@/source/path"
 import { UrlFn } from "@/source/types"
 
 export interface LoaderConfig {
@@ -9,6 +11,12 @@ export interface LoaderOptions {
   baseUrl: string
   url?: UrlFn
   transformers?: Transformer[]
+
+  /**
+   * Additional options for page tree builder
+   */
+  pageTree?: Partial<Omit<BuildPageTreeOptions, "storage" | "getUrl">>
+
   /**
    * Configure i18n
    */
@@ -50,6 +58,17 @@ export function createGetUrl(baseUrl: string, i18n?: I18nConfig): UrlFn {
   }
 }
 
+export function getSlugs(info: FileInfo): string[] {
+  return [...info.dirname.split("/"), info.name].filter(
+    // filter empty folder names and file groups like (group_name)
+    (v, i, arr) => {
+      if (v.length === 0) return false
+
+      return i === arr.length - 1 ? v !== "index" : !/^\(.+\)$/.test(v)
+    }
+  )
+}
+
 export function loader<Options extends LoaderOptions>(
   options: Options
 ): LoaderOutput {
@@ -61,7 +80,7 @@ function createOutput(options: LoaderOptions) {
     console.warn("`loader()` now requires a `baseUrl` option to be defined.")
   }
 
-  const { source, rootDir = "", slugs: slugsFn = getSlugs } = options
+  const { baseUrl } = options
   const getUrl =
     options.url ?? createGetUrl(options.baseUrl ?? "/", options.i18n)
 
