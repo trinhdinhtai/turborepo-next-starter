@@ -1,5 +1,8 @@
 import { I18nConfig } from "@/i18n"
-import { BuildPageTreeOptions } from "@/source/page-tree-builder"
+import {
+  BuildPageTreeOptions,
+  createPageTreeBuilder,
+} from "@/source/page-tree-builder"
 import { FileInfo } from "@/source/path"
 import { UrlFn } from "@/source/types"
 
@@ -83,6 +86,8 @@ function createOutput(options: LoaderOptions) {
   const { baseUrl } = options
   const getUrl =
     options.url ?? createGetUrl(options.baseUrl ?? "/", options.i18n)
+
+  const builder = createPageTreeBuilder()
 
   return {}
 }
