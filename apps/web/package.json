@@ -54,7 +54,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@content-collections/core": "^0.7.3",
+    "@content-collections/core": "^0.8.0",
     "@content-collections/next": "^0.2.4",
     "@tafiui/eslint-config": "workspace:*",
     "@tafiui/ts-config": "workspace:*",

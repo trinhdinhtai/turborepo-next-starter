@@ -72,7 +72,7 @@ importers:
     dependencies:
       '@content-collections/mdx':
         specifier: ^0.2.0
-        version: 0.2.0(@content-collections/core@0.7.3(typescript@5.5.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 0.2.0(@content-collections/core@0.8.0(typescript@5.5.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-accordion':
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -192,11 +192,11 @@ importers:
         version: 3.23.8
     devDependencies:
       '@content-collections/core':
-        specifier: ^0.7.3
-        version: 0.7.3(typescript@5.5.4)
+        specifier: ^0.8.0
+        version: 0.8.0(typescript@5.5.4)
       '@content-collections/next':
         specifier: ^0.2.4
-        version: 0.2.4(@content-collections/core@0.7.3(typescript@5.5.4))(next@15.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 0.2.4(@content-collections/core@0.8.0(typescript@5.5.4))(next@15.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@tafiui/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -676,11 +676,6 @@ packages:
   '@babel/types@7.26.3':
     resolution: {integrity: sha512-vN5p+1kl59GVKMvTHt55NzzmYVxprfJD+ql7U9NFIfKCBkYE55LYtS+WtPlaYOyzydrKI8Nezd+aZextrd+FMA==}
     engines: {node: '>=6.9.0'}
-
-  '@content-collections/core@0.7.3':
-    resolution: {integrity: sha512-eqrQ/59BdorWQFFLF1sGPtIKzsn1OPSomok8e6MevYAaZ2knkhI3ddTQqo8OMrW/zA5H71Pbg0cgxbCN0pOVsg==}
-    peerDependencies:
-      typescript: ^5.0.2
 
   '@content-collections/core@0.8.0':
     resolution: {integrity: sha512-WCP9mQCbigjalgl0wE96wjbmk6dZVk0Jw5VL4/lCSfKM70LrpjIHFtFGNpF1w2n4M/kODsvVZ/F5bX+co0q8OQ==}
@@ -5830,7 +5825,7 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@content-collections/core@0.7.3(typescript@5.5.4)':
+  '@content-collections/core@0.8.0(typescript@5.5.4)':
     dependencies:
       '@parcel/watcher': 2.5.0
       camelcase: 8.0.0
@@ -5860,13 +5855,13 @@ snapshots:
       yaml: 2.6.1
       zod: 3.24.1
 
-  '@content-collections/integrations@0.2.1(@content-collections/core@0.7.3(typescript@5.5.4))':
+  '@content-collections/integrations@0.2.1(@content-collections/core@0.8.0(typescript@5.5.4))':
     dependencies:
-      '@content-collections/core': 0.7.3(typescript@5.5.4)
+      '@content-collections/core': 0.8.0(typescript@5.5.4)
 
-  '@content-collections/mdx@0.2.0(@content-collections/core@0.7.3(typescript@5.5.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@content-collections/mdx@0.2.0(@content-collections/core@0.8.0(typescript@5.5.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@content-collections/core': 0.7.3(typescript@5.5.4)
+      '@content-collections/core': 0.8.0(typescript@5.5.4)
       esbuild: 0.21.5
       mdx-bundler: 10.0.3(esbuild@0.21.5)
       react: 19.0.0
@@ -5888,10 +5883,10 @@ snapshots:
       - acorn
       - supports-color
 
-  '@content-collections/next@0.2.4(@content-collections/core@0.7.3(typescript@5.5.4))(next@15.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@content-collections/next@0.2.4(@content-collections/core@0.8.0(typescript@5.5.4))(next@15.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
-      '@content-collections/core': 0.7.3(typescript@5.5.4)
-      '@content-collections/integrations': 0.2.1(@content-collections/core@0.7.3(typescript@5.5.4))
+      '@content-collections/core': 0.8.0(typescript@5.5.4)
+      '@content-collections/integrations': 0.2.1(@content-collections/core@0.8.0(typescript@5.5.4))
       next: 15.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   '@cspotcode/source-map-support@0.8.1':
