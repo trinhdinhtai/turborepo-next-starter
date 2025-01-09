@@ -9,6 +9,7 @@ import { rehypeComponent } from "@/lib/rehypeComponent";
 import { visit } from "unist-util-visit";
 import rehypeNpmCommand from "@/lib/rehype-npm-commmand";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { createDocSchema } from "@tafiui/content-collections/configuration";
 
 const prettyCodeOptions: Options = {
   theme: "github-dark",
@@ -41,19 +42,7 @@ const documents = defineCollection({
   name: "Doc",
   directory: "content/docs",
   include: "**/*.mdx",
-  schema: (z) => ({
-    title: z.string(),
-    description: z.string(),
-    published: z.boolean().default(true),
-    date: z.string().optional(),
-    links: z
-      .object({
-        doc: z.string().optional(),
-        api: z.string().optional(),
-      })
-      .optional(),
-    toc: z.boolean().optional().default(true),
-  }),
+  schema: createDocSchema,
   transform: async (document, context) => {
     const body = await compileMDX(context, document, {
       remarkPlugins: [codeImport, remarkGfm],

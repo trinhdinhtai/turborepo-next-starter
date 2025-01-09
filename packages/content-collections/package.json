@@ -1,0 +1,55 @@
+{
+  "name": "@tafiui/content-collections",
+  "version": "1.1.6",
+  "description": "The Content Collections adapter for Fumadocs",
+  "keywords": [
+    "NextJs",
+    "Docs",
+    "Content Collections"
+  ],
+  "homepage": "https://tafiui.dev",
+  "repository": "github:trinhdinhtai/tafiui",
+  "license": "MIT",
+  "author": "Trinh Dinh Tai",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./configuration": {
+      "import": "./dist/configuration.js",
+      "types": "./dist/configuration.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "types:check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@content-collections/core": "^0.8.0",
+    "@content-collections/mdx": "^0.2.0",
+    "@tafiui/core": "workspace:*",
+    "@tafiui/eslint-config": "workspace:*",
+    "@tafiui/ts-config": "workspace:*",
+    "@types/node": "22.10.5",
+    "unified": "^11.0.5",
+    "zod": "^3.24.1"
+  },
+  "peerDependencies": {
+    "@content-collections/core": "0.x.x",
+    "@content-collections/mdx": "0.x.x",
+    "@tafiui/core": "^13.2.1 || ^14.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
