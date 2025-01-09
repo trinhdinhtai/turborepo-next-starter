@@ -1,6 +1,7 @@
 import { I18nConfig } from "@/i18n"
 import type * as PageTree from "@/server/page-tree"
 import { type Folder } from "@/source/file-system"
+import { resolvePath } from "@/utils/path"
 
 interface PageTreeBuilderContext {
   lang?: string
@@ -25,7 +26,9 @@ function buildFolderNode(
   folder: Folder,
   isGlobalRoot: boolean,
   ctx: PageTreeBuilderContext
-) {}
+) {
+  const metaPath = resolvePath(folder.file.path, "meta")
+}
 
 export interface PageTreeBuilder {
   build: (options: BuildPageTreeOptions) => PageTree.Root
