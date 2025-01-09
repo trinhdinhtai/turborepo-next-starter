@@ -1,4 +1,33 @@
-import type { z as Zod } from "zod";
+/**
+ * Default configuration
+ *
+ * You may copy and modify the code
+ */
+import { ResolvePlugins } from "@/resolve-plugins"
+import type { Context, Meta } from "@content-collections/core"
+import {
+  compileMDX as baseCompileMDX,
+  type Options as MDXOptions,
+} from "@content-collections/mdx"
+import type { z as Zod } from "zod"
+
+export interface TransformOptions
+  extends Omit<MDXOptions, "remarkPlugins" | "rehypePlugins"> {
+  remarkPlugins?: ResolvePlugins
+  rehypePlugins?: ResolvePlugins
+
+  /**
+   * Generate `structuredData`
+   *
+   * @defaultValue true
+   */
+  generateStructuredData?: boolean
+}
+
+interface BaseDoc {
+  _meta: Meta
+  content: string
+}
 
 export function createDocSchema(z: typeof Zod) {
   return {
@@ -13,5 +42,5 @@ export function createDocSchema(z: typeof Zod) {
       })
       .optional(),
     toc: z.boolean().optional().default(true),
-  };
+  }
 }
