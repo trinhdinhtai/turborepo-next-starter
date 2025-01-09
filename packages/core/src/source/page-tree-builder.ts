@@ -1,7 +1,8 @@
 import { I18nConfig } from "@/i18n"
 import type * as PageTree from "@/server/page-tree"
-import { type Folder } from "@/source/file-system"
+import { type Folder, type MetaFile } from "@/source/file-system"
 import { resolvePath } from "@/utils/path"
+import { removeUndefined } from "@/utils/remove-undefined"
 
 interface PageTreeBuilderContext {
   lang?: string
@@ -20,6 +21,12 @@ export interface BuildPageTreeOptions {
    * @defaultValue false
    */
   noRef?: boolean
+
+  attachFolder?: (
+    node: PageTree.Folder,
+    folder: Folder,
+    meta?: MetaFile
+  ) => PageTree.Folder
 }
 
 function buildFolderNode(
@@ -28,6 +35,8 @@ function buildFolderNode(
   ctx: PageTreeBuilderContext
 ) {
   const metaPath = resolvePath(folder.file.path, "meta")
+
+  //   return removeUndefined(ctx.options.attachFolder?.(node, folder, meta) ?? node)
 }
 
 export interface PageTreeBuilder {
