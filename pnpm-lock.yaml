@@ -112,6 +112,9 @@ importers:
       '@tafiui/content-collections':
         specifier: workspace:*
         version: link:../../packages/content-collections
+      '@tafiui/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@tafiui/mdx':
         specifier: workspace:*
         version: link:../../packages/mdx
