@@ -5,7 +5,6 @@ import { source } from "@/lib/source"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { DocsSidebarNav } from "@/components/layout/sidebar-nav"
 
-console.log("🚀 ~ source:", source)
 export default function DocsLayout({ children }: PropsWithChildren) {
   return (
     <div className="border-b">

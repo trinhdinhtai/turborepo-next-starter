@@ -1,69 +1,54 @@
-import { Mdx } from "@/components/mdx-components";
-import TableOfContents from "@/components/toc";
-import { badgeVariants } from "@/components/ui/badge";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { getTableOfContents } from "@/lib/toc";
-import { cn } from "@/lib/utils";
-import { allDocs } from "content-collections";
-import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import Link from "next/link"
+import { notFound } from "next/navigation"
+import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
+
+import { source } from "@/lib/source"
+import { getTableOfContents } from "@/lib/toc"
+import { cn } from "@/lib/utils"
+import { badgeVariants } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Mdx } from "@/components/mdx-components"
+import TableOfContents from "@/components/toc"
 
 interface DocPageProps {
   params: Promise<{
-    slug: string[];
-  }>;
-}
-
-async function getDocFromParams({ params }: DocPageProps) {
-  const docParams = await params;
-  const slug = docParams.slug?.join("\\") || "";
-
-  const doc = allDocs.find((doc) => {
-    return doc.slug === slug;
-  });
-
-  if (!doc) {
-    return null;
-  }
-
-  return doc;
+    slug: string[]
+  }>
 }
 
 export default async function DocPage({ params }: DocPageProps) {
-  const doc = await getDocFromParams({ params });
+  const pageParams = await params
+  const doc = source.getPage(pageParams.slug)
 
-  if (!doc || !doc.published) {
-    notFound();
-  }
+  if (!doc) notFound()
 
-  const toc = await getTableOfContents(doc.body.raw);
+  const { title, description } = doc.data
 
   return (
     <main
       className={cn(
         "relative py-6 lg:gap-10 lg:py-8 xl:grid",
-        doc.toc && "xl:grid-cols-[1fr_300px]"
+        doc.data.toc && "xl:grid-cols-[1fr_300px]"
       )}
     >
       <div className="mx-auto w-full min-w-0">
         <div className="text-muted-foreground mb-4 flex items-center space-x-1 text-sm">
           <div className="truncate">Docs</div>
           <ChevronRightIcon className="size-4" />
-          <div className="text-foreground font-medium">{doc.title}</div>
+          <div className="text-foreground font-medium">{title}</div>
         </div>
         <div className="space-y-2">
           <h1 className={cn("scroll-m-20 text-4xl font-bold tracking-tight")}>
-            {doc.title}
+            {title}
           </h1>
-          {doc.description && (
+          {description && (
             <p className="text-muted-foreground text-balance text-lg">
-              {doc.description}
+              {description}
             </p>
           )}
         </div>
 
-        {doc.links ? (
+        {/* {doc.links ? (
           <div className="flex items-center space-x-2 pt-4">
             {doc.links?.doc && (
               <Link
@@ -88,13 +73,13 @@ export default async function DocPage({ params }: DocPageProps) {
               </Link>
             )}
           </div>
-        ) : null}
-        <div className="pb-12 pt-8">
+        ) : null} */}
+        {/* <div className="pb-12 pt-8">
           <Mdx code={doc.body.code} />
-        </div>
+        </div> */}
       </div>
 
-      {doc.toc && (
+      {/* {doc.toc && (
         <div className="hidden text-sm xl:block">
           <div className="sticky top-16 -mt-10 pt-4">
             <ScrollArea className="pb-10">
@@ -104,7 +89,7 @@ export default async function DocPage({ params }: DocPageProps) {
             </ScrollArea>
           </div>
         </div>
-      )}
+      )} */}
     </main>
-  );
+  )
 }
