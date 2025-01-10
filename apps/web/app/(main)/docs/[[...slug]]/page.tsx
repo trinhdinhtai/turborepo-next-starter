@@ -23,10 +23,10 @@ export default async function DocPage({ params }: DocPageProps) {
 
   if (!doc) notFound()
 
-  const { title, description, body } = doc.data
+  const { title, description, body, toc } = doc.data
 
   return (
-    <DocsPage></DocsPage>
+    <DocsPage toc={toc}></DocsPage>
     // <main
     //   className={cn(
     //     "relative py-6 lg:gap-10 lg:py-8 xl:grid",
