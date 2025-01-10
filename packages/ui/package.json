@@ -1,26 +1,38 @@
 {
-  "name": "@repo/ui",
-  "version": "0.0.0",
+  "name": "tafiui",
+  "version": "0.0.1",
   "type": "module",
   "private": true,
-  "exports": {
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx"
-  },
   "scripts": {
+    "build": "pnpm build:layout",
+    "build:layout": "tsc --project tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "dev": "concurrently \"tsc -w --project tsconfig.build.json\" \"tsc-alias -w -p tsconfig.build.json\"",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
+  "exports": {
+    "./button": "./src/button.tsx",
+    "./card": "./src/card.tsx",
+    "./code": "./src/code.tsx",
+    "./page": {
+      "import": "./dist/page.js",
+      "types": "./dist/page.d.ts"
+    }
+  },
   "devDependencies": {
+    "@tafiui/core": "workspace:*",
     "@tafiui/eslint-config": "workspace:*",
     "@tafiui/ts-config": "workspace:*",
     "@turbo/gen": "^1.12.4",
     "@types/node": "^20.11.24",
     "@types/react": "18.3.0",
     "@types/react-dom": "18.3.1",
+    "tsc-alias": "^1.8.10",
     "typescript": "5.5.4"
+  },
+  "peerDependencies": {
+    "@tafiui/core": "workspace:*"
   },
   "dependencies": {
     "react": "19.0.0-rc-5c56b873-20241107",

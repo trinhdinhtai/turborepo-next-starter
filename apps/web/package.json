@@ -24,7 +24,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.4",
-    "@repo/ui": "workspace:*",
+    "tafiui": "workspace:*",
     "@tafiui/content-collections": "workspace:*",
     "@tafiui/core": "workspace:*",
     "@tafiui/mdx": "workspace:*",
