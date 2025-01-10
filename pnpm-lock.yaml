@@ -562,6 +562,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@radix-ui/react-slot':
+        specifier: ^1.1.0
+        version: 1.1.1(@types/react@18.3.0)(react@19.0.0-rc-5c56b873-20241107)
       react:
         specifier: 19.0.0-rc-5c56b873-20241107
         version: 19.0.0-rc-5c56b873-20241107
@@ -6734,6 +6737,12 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.1
 
+  '@radix-ui/react-compose-refs@1.1.1(@types/react@18.3.0)(react@19.0.0-rc-5c56b873-20241107)':
+    dependencies:
+      react: 19.0.0-rc-5c56b873-20241107
+    optionalDependencies:
+      '@types/react': 18.3.0
+
   '@radix-ui/react-compose-refs@1.1.1(@types/react@18.3.1)(react@19.0.0)':
     dependencies:
       react: 19.0.0
@@ -7144,6 +7153,13 @@ snapshots:
       react: 19.0.0
     optionalDependencies:
       '@types/react': 18.3.1
+
+  '@radix-ui/react-slot@1.1.1(@types/react@18.3.0)(react@19.0.0-rc-5c56b873-20241107)':
+    dependencies:
+      '@radix-ui/react-compose-refs': 1.1.1(@types/react@18.3.0)(react@19.0.0-rc-5c56b873-20241107)
+      react: 19.0.0-rc-5c56b873-20241107
+    optionalDependencies:
+      '@types/react': 18.3.0
 
   '@radix-ui/react-slot@1.1.1(@types/react@18.3.1)(react@19.0.0)':
     dependencies:

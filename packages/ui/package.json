@@ -35,6 +35,7 @@
     "@tafiui/core": "workspace:*"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "react": "19.0.0-rc-5c56b873-20241107",
     "react-dom": "19.0.0-rc-5c56b873-20241107"
   }

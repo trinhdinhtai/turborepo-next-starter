@@ -18,6 +18,7 @@ type TableOfContentOptions = Omit<TOCProps, "items" | "children"> &
 export interface DocsPageProps {
   toc?: TableOfContents
   tableOfContent?: Partial<TableOfContentOptions>
+  children: ReactNode
 }
 
 export function DocsPage({
@@ -34,5 +35,5 @@ export function DocsPage({
     tocOptions.footer !== undefined ||
     tocOptions.header !== undefined
 
-  return <AnchorProvider toc={toc}></AnchorProvider>
+  return <AnchorProvider toc={toc}>{props.children}</AnchorProvider>
 }
