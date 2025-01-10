@@ -22,7 +22,7 @@ export default async function DocPage({ params }: DocPageProps) {
 
   if (!doc) notFound()
 
-  const { title, description } = doc.data
+  const { title, description, body } = doc.data
 
   return (
     <main
@@ -74,9 +74,9 @@ export default async function DocPage({ params }: DocPageProps) {
             )}
           </div>
         ) : null} */}
-        {/* <div className="pb-12 pt-8">
-          <Mdx code={doc.body.code} />
-        </div> */}
+        <div className="pb-12 pt-8">
+          <Mdx code={body} />
+        </div>
       </div>
 
       {/* {doc.toc && (
