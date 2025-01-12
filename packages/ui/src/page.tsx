@@ -1,4 +1,5 @@
 import { type ReactNode } from "react"
+import { PageBody } from "@/page.client"
 import { type TableOfContents } from "@tafiui/core/server"
 import { AnchorProvider, type AnchorProviderProps } from "@tafiui/core/toc"
 
@@ -35,5 +36,9 @@ export function DocsPage({
     tocOptions.footer !== undefined ||
     tocOptions.header !== undefined
 
-  return <AnchorProvider toc={toc}>{props.children}</AnchorProvider>
+  return (
+    <AnchorProvider toc={toc}>
+      <PageBody>{props.children}</PageBody>
+    </AnchorProvider>
+  )
 }

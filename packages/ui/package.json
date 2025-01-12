@@ -12,14 +12,45 @@
     "check-types": "tsc --noEmit"
   },
   "exports": {
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx",
+    "./style.css": "./dist/style.css",
+    "./image-zoom.css": "./dist/image-zoom.css",
+    "./tailwind-plugin": {
+      "import": "./dist/tailwind-plugin.js",
+      "types": "./dist/tailwind-plugin.d.ts",
+      "default": "./dist/tailwind-plugin.js"
+    },
+    "./components/*": {
+      "import": "./dist/components/*.js",
+      "types": "./dist/components/*.d.ts"
+    },
+    "./i18n": {
+      "import": "./dist/i18n.js",
+      "types": "./dist/i18n.d.ts"
+    },
+    "./layouts/*": {
+      "import": "./dist/layouts/*.js",
+      "types": "./dist/layouts/*.d.ts"
+    },
     "./page": {
       "import": "./dist/page.js",
       "types": "./dist/page.d.ts"
+    },
+    "./provider": {
+      "import": "./dist/provider.js",
+      "types": "./dist/provider.d.ts"
+    },
+    "./mdx": {
+      "import": "./dist/mdx.js",
+      "types": "./dist/mdx.d.ts"
+    },
+    "./og": {
+      "import": "./dist/og.js",
+      "types": "./dist/og.d.ts"
     }
   },
+  "files": [
+    "dist/*"
+  ],
   "devDependencies": {
     "@tafiui/core": "workspace:*",
     "@tafiui/eslint-config": "workspace:*",
@@ -37,6 +68,7 @@
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
     "react": "19.0.0-rc-5c56b873-20241107",
-    "react-dom": "19.0.0-rc-5c56b873-20241107"
+    "react-dom": "19.0.0-rc-5c56b873-20241107",
+    "tailwind-merge": "^2.5.5"
   }
 }
