@@ -1,6 +1,6 @@
 {
   "name": "@tafiui/core",
-  "version": "14.7.1",
+  "version": "0.0.1",
   "description": "The library for building a documentation website in Next.js",
   "keywords": [
     "NextJs",

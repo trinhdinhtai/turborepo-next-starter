@@ -2,7 +2,6 @@
   "name": "tafiui",
   "version": "0.0.1",
   "type": "module",
-  "private": true,
   "scripts": {
     "build": "pnpm build:layout",
     "build:layout": "tsc --project tsconfig.build.json && tsc-alias -p tsconfig.build.json",
@@ -70,5 +69,8 @@
     "react": "19.0.0-rc-5c56b873-20241107",
     "react-dom": "19.0.0-rc-5c56b873-20241107",
     "tailwind-merge": "^2.5.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

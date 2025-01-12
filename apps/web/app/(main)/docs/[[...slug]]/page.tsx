@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react"
+import { DocsPage } from "tafiui/page"
 
 import { source } from "@/lib/source"
 import { getTableOfContents } from "@/lib/toc"
