@@ -1,5 +1,6 @@
 import { type ReactNode } from "react"
-import { PageBody } from "@/page.client"
+import { replaceOrDefault } from "@/layouts/shared"
+import { PageBody, TocNav } from "@/page.client"
 import { type TableOfContents } from "@tafiui/core/server"
 import { AnchorProvider, type AnchorProviderProps } from "@tafiui/core/toc"
 
@@ -38,7 +39,10 @@ export function DocsPage({
 
   return (
     <AnchorProvider toc={toc}>
-      <PageBody>{props.children}</PageBody>
+      <PageBody>
+        {replaceOrDefault({}, <TocNav></TocNav>)}
+        {props.children}
+      </PageBody>
     </AnchorProvider>
   )
 }
