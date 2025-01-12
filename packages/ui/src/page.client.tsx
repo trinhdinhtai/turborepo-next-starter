@@ -1,3 +1,5 @@
+"use client"
+
 import { type HTMLAttributes } from "react"
 import { usePageStyles } from "@/contexts/layout"
 import { cn } from "@/utils/cn"
