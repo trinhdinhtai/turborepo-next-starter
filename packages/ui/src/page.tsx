@@ -4,7 +4,11 @@ import { PageBody, TocNav } from "@/page.client"
 import { type TableOfContents } from "@tafiui/core/server"
 import { AnchorProvider, type AnchorProviderProps } from "@tafiui/core/toc"
 
-import { TOCProps } from "@/components/layout/toc"
+import {
+  TocPopover,
+  TocPopoverTrigger,
+  type TOCProps,
+} from "@/components/layout/toc"
 
 type TableOfContentOptions = Omit<TOCProps, "items" | "children"> &
   Pick<AnchorProviderProps, "single"> & {
@@ -40,7 +44,17 @@ export function DocsPage({
   return (
     <AnchorProvider toc={toc}>
       <PageBody>
-        {replaceOrDefault({}, <TocNav></TocNav>)}
+        {replaceOrDefault(
+          {},
+          <TocNav>
+            <TocPopover>
+              <TocPopoverTrigger
+                className="size-full"
+                items={toc}
+              ></TocPopoverTrigger>
+            </TocPopover>
+          </TocNav>
+        )}
         {props.children}
       </PageBody>
     </AnchorProvider>
