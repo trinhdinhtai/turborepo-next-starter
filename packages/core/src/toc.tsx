@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useMemo, type ReactNode } from "react"
+import { createContext, useContext, useMemo, type ReactNode } from "react"
 import type { TableOfContents } from "@/server"
 import { useAnchorObserver } from "@/utils/use-anchor-observer"
 
@@ -15,6 +15,13 @@ export interface AnchorProviderProps {
    */
   single?: boolean
   children?: ReactNode
+}
+
+/**
+ * The estimated active heading ID
+ */
+export function useActiveAnchor(): string | undefined {
+  return useContext(ActiveAnchorContext).at(-1)
 }
 
 export function AnchorProvider({

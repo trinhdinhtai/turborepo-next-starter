@@ -4,6 +4,8 @@ import { useMemo, type ReactNode } from "react"
 import { cn } from "@/utils/cn"
 import { PopoverTriggerProps } from "@radix-ui/react-popover"
 import type { TOCItemType } from "@tafiui/core/server"
+import * as Primitive from "@tafiui/core/toc"
+import { ChevronRight, Text } from "lucide-react"
 
 import {
   Popover,
@@ -31,6 +33,11 @@ export function TocPopoverTrigger({
   items,
   ...props
 }: PopoverTriggerProps & { items: TOCItemType[] }) {
+  const active = Primitive.useActiveAnchor()
+  const current = useMemo(() => {
+    return items.find((item) => active === item.url.slice(1))?.title
+  }, [items, active])
+
   return (
     <PopoverTrigger
       {...props}
@@ -39,7 +46,12 @@ export function TocPopoverTrigger({
         props.className
       )}
     >
-      Toc trigger
+      {current ? (
+        <>
+          <ChevronRight className="-mx-1.5 size-4 shrink-0 text-fd-muted-foreground" />
+          <span className="truncate text-fd-muted-foreground">{current}</span>
+        </>
+      ) : null}
     </PopoverTrigger>
   )
 }
