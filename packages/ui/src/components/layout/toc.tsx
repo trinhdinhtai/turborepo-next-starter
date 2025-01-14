@@ -36,7 +36,7 @@ export function TocPopoverTrigger({
   const active = Primitive.useActiveAnchor()
   const current = useMemo(() => {
     return items.find((item) => active === item.url.slice(1))?.title
-  }, [items, active])
+  }, [items, active]) as ReactNode
 
   return (
     <PopoverTrigger
