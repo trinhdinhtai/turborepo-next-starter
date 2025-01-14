@@ -20,6 +20,7 @@ interface DocPageProps {
 export default async function DocPage({ params }: DocPageProps) {
   const pageParams = await params
   const doc = source.getPage(pageParams.slug)
+  console.log("🚀 ~ DocPage ~ doc:", doc)
 
   if (!doc) notFound()
 

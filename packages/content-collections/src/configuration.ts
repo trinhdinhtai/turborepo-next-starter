@@ -15,6 +15,8 @@ import {
 } from "@content-collections/mdx"
 import {
   rehypeCode,
+  remarkGfm,
+  remarkHeading,
   type RehypeCodeOptions,
   type RemarkHeadingOptions,
   type RemarkImageOptions,
@@ -137,7 +139,13 @@ export async function transformMDX<D extends BaseDoc>(
             ],
             rest.rehypePlugins
           ),
-          remarkPlugins: undefined,
+          remarkPlugins: resolvePlugins(
+            (plugins) => [
+              remarkGfm,
+              resolvePlugin(remarkHeading, remarkHeadingOptions ?? true),
+            ],
+            rest.remarkPlugins
+          ),
         }
       )
 
