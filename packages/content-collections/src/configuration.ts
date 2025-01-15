@@ -76,8 +76,6 @@ export function createDocSchema(z: typeof Zod) {
     description: z.string().optional(),
     icon: z.string().optional(),
     full: z.boolean().optional(),
-    // Fumadocs OpenAPI generated
-    _openapi: z.record(z.any()).optional(),
   }
 }
 
@@ -143,6 +141,12 @@ export async function transformMDX<D extends BaseDoc>(
             (plugins) => [
               remarkGfm,
               resolvePlugin(remarkHeading, remarkHeadingOptions ?? true),
+              ...plugins,
+              () => {
+                return (_, file) => {
+                  data = file.data
+                }
+              },
             ],
             rest.remarkPlugins
           ),
