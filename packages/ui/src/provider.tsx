@@ -1,6 +1,7 @@
 "use client"
 
 import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from "react"
+import { SidebarProvider } from "@/contexts/sidebar"
 import { ThemeProvider } from "next-themes"
 
 export interface RootProviderProps {
@@ -38,5 +39,5 @@ export function RootProvider({
       </ThemeProvider>
     )
 
-  return <>{body}</>
+  return <SidebarProvider>{body}</SidebarProvider>
 }

@@ -1,6 +1,10 @@
 import type { ReactNode } from "react"
 import { Slot } from "@radix-ui/react-slot"
 
+export interface BaseLayoutProps {
+  children?: ReactNode
+}
+
 export function replaceOrDefault(
   obj:
     | {
