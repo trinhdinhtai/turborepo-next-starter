@@ -50,28 +50,44 @@
   "files": [
     "dist/*"
   ],
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.2",
+    "@radix-ui/react-collapsible": "^1.1.2",
+    "@radix-ui/react-dialog": "^1.1.4",
+    "@radix-ui/react-direction": "^1.1.0",
+    "@radix-ui/react-navigation-menu": "^1.2.3",
+    "@radix-ui/react-popover": "^1.1.4",
+    "@radix-ui/react-scroll-area": "^1.2.2",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-tabs": "^1.1.2",
+    "class-variance-authority": "^0.7.1",
+    "@tafiui/core": "0.0.2",
+    "lodash.merge": "^4.6.2",
+    "lucide-react": "^0.469.0",
+    "next-themes": "^0.4.4",
+    "postcss-selector-parser": "^7.0.0",
+    "react-medium-image-zoom": "^5.2.13",
+    "tailwind-merge": "^2.6.0"
+  },
   "devDependencies": {
-    "@tafiui/core": "workspace:*",
+    "@next/eslint-plugin-next": "^15.1.4",
     "@tafiui/eslint-config": "workspace:*",
     "@tafiui/ts-config": "workspace:*",
-    "@turbo/gen": "^1.12.4",
-    "@types/node": "^20.11.24",
-    "@types/react": "18.3.0",
-    "@types/react-dom": "18.3.1",
-    "tsc-alias": "^1.8.10",
-    "typescript": "5.5.4"
+    "@types/lodash.merge": "^4.6.9",
+    "@types/react": "^19.0.4",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "next": "15.1.4",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.17",
+    "tsc-alias": "^1.8.10"
   },
   "peerDependencies": {
-    "@tafiui/core": "workspace:*"
-  },
-  "dependencies": {
-    "@radix-ui/react-popover": "^1.1.4",
-    "@radix-ui/react-slot": "^1.1.0",
-    "lucide-react": "^0.468.0",
-    "next-themes": "^0.4.3",
-    "react": "19.0.0-rc-5c56b873-20241107",
-    "react-dom": "19.0.0-rc-5c56b873-20241107",
-    "tailwind-merge": "^2.5.5"
+    "next": "14.x.x || 15.x.x",
+    "react": "18.x.x || 19.x.x",
+    "react-dom": "18.x.x || 19.x.x",
+    "tailwindcss": "^3.4.14"
   },
   "publishConfig": {
     "access": "public"

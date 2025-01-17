@@ -1,13 +1,16 @@
 import {
   createContext,
-  PropsWithChildren,
+  useContext,
   useMemo,
   useRef,
   useState,
   type ReactNode,
   type RefObject,
 } from "react"
-import { SidebarProvider as BaseSidebarProvider } from "@tafiui/core/sidebar"
+import { usePathname } from "next/navigation"
+import { SidebarProvider as BaseProvider } from "@tafiui/core/sidebar"
+
+// import { SidebarProvider as BaseProvider } from "fumadocs-core/sidebar"
 
 interface SidebarContext {
   open: boolean
@@ -23,10 +26,22 @@ interface SidebarContext {
 
 const SidebarContext = createContext<SidebarContext | undefined>(undefined)
 
-export function SidebarProvider({ children }: PropsWithChildren): ReactNode {
+export function useSidebar(): SidebarContext {
+  const ctx = useContext(SidebarContext)
+  if (!ctx) throw new Error("Missing root provider")
+  return ctx
+}
+
+export function SidebarProvider({
+  children,
+}: {
+  children: ReactNode
+}): ReactNode {
   const closeOnRedirect = useRef(true)
   const [open, setOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(false)
+
+  const pathname = usePathname()
 
   return (
     <SidebarContext.Provider
@@ -41,9 +56,9 @@ export function SidebarProvider({ children }: PropsWithChildren): ReactNode {
         [open, collapsed]
       )}
     >
-      <BaseSidebarProvider open={open} onOpenChange={setOpen}>
+      <BaseProvider open={open} onOpenChange={setOpen}>
         {children}
-      </BaseSidebarProvider>
+      </BaseProvider>
     </SidebarContext.Provider>
   )
 }
