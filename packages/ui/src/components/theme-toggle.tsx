@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import React from "react";
-import { useTheme } from "next-themes";
+import React from "react"
+import { cn } from "@/utils/cn"
+import { MoonIcon, SunIcon } from "lucide-react"
+import { useTheme } from "next-themes"
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { MoonIcon, SunIcon } from "lucide-react";
+import { Button } from "@/components/ui/button"
 
 export const ThemeToggle = React.forwardRef<
   HTMLButtonElement,
   React.ComponentPropsWithoutRef<typeof Button> & { className?: string }
 >(({ className, ...props }, ref) => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
 
   return (
     <Button
@@ -27,7 +27,7 @@ export const ThemeToggle = React.forwardRef<
       <SunIcon className="size-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
       <MoonIcon className="hidden size-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />
     </Button>
-  );
-});
+  )
+})
 
-ThemeToggle.displayName = "ThemeToggle";
+ThemeToggle.displayName = "ThemeToggle"

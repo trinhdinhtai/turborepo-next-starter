@@ -8,7 +8,6 @@ import { RootProvider } from "tafiui/provider"
 
 import { geistMono, geistSans } from "@/lib/fonts"
 import { cn, constructMetadata } from "@/lib/utils"
-import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 export const metadata: Metadata = constructMetadata({
@@ -31,10 +30,7 @@ export default function RootLayout({
           )}
         >
           <RootProvider>
-            <TooltipProvider>
-              {children}
-              <Toaster />
-            </TooltipProvider>
+            <TooltipProvider>{children}</TooltipProvider>
           </RootProvider>
         </body>
       </html>

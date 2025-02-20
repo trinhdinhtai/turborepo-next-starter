@@ -1,17 +1,17 @@
-import { CommandMenu } from "@/components/command-menu";
-import { Icons } from "@/components/icons";
-import MainNav from "@/components/layout/main-nav";
-import MobileNav from "@/components/layout/mobile-nav";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { buttonVariants } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import NumberTicker from "@/registry/miami/ui/number-ticker";
-import { StarIcon } from "lucide-react";
-import Link from "next/link";
+import Link from "next/link"
+import { StarIcon } from "lucide-react"
+import { ThemeToggle } from "tafiui/components/theme-toggle"
+
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
+import MainNav from "@/components/layout/main-nav"
+import MobileNav from "@/components/layout/mobile-nav"
+import NumberTicker from "@/registry/miami/ui/number-ticker"
 
 export default async function SiteHeader() {
-  let stars = 0;
+  let stars = 0
 
   try {
     const response = await fetch(
@@ -27,14 +27,14 @@ export default async function SiteHeader() {
           revalidate: 3600,
         },
       }
-    );
+    )
 
     if (response.ok) {
-      const data = await response.json();
-      stars = data.stargazers_count || stars;
+      const data = await response.json()
+      stars = data.stargazers_count || stars
     }
   } catch (error) {
-    console.error("Error fetching GitHub stars:", error);
+    console.error("Error fetching GitHub stars:", error)
   }
 
   return (
@@ -71,9 +71,7 @@ export default async function SiteHeader() {
             </div>
           </Link>
 
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <CommandMenu />
-          </div>
+          <div className="w-full flex-1 md:w-auto md:flex-none"></div>
 
           <nav className="flex items-center gap-1">
             <ThemeToggle />
@@ -82,5 +80,5 @@ export default async function SiteHeader() {
       </div>
       <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" />
     </header>
-  );
+  )
 }
